@@ -61,7 +61,6 @@ public class DAO_hyul {
 		} finally {
 			DbClose.close(rs, pstmt, conn);
 		}
-
 		return dtoAry_hyul;
 	}
 
@@ -140,21 +139,7 @@ public class DAO_hyul {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
-			// 리소스 정리
-			if (pstmt != null) {
-				try {
-					pstmt.close();
-				} catch (SQLException e) {
-					e.printStackTrace();
-				}
-			}
-			if (conn != null) {
-				try {
-					conn.close();
-				} catch (SQLException e) {
-					e.printStackTrace();
-				}
-			}
+			DbClose.close(pstmt, conn);
 		}
 	}
 

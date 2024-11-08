@@ -8,9 +8,15 @@ import java.sql.SQLException;
 public class DbClose {
 	static public void close(ResultSet rs, PreparedStatement pstmt, Connection conn) {
 		try {
-			rs.close();
-			pstmt.close();
-			conn.close();
+			if (rs != null) {
+				rs.close();
+			}
+			if (pstmt != null) {
+				pstmt.close();
+			}
+			if (conn != null) {
+				conn.close();
+			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -18,8 +24,12 @@ public class DbClose {
 	
 	static public void close(PreparedStatement pstmt, Connection conn) {
 		try {
-			pstmt.close();
-			conn.close();
+			if (pstmt != null) {
+				pstmt.close();
+			}
+			if (conn != null) {
+				conn.close();
+			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
