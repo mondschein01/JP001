@@ -1,4 +1,6 @@
-p {
-	margin: 0 auto;
-	text-align: center;
+footer {
+	display: flex;
+	justify-content: center;
+	height: 50px;
+	line-height: 50px;
 }
