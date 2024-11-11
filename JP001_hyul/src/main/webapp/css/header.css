@@ -1,4 +1,8 @@
-ul {
+header {
+	width: 1340px;
+}
+
+header ul {
 	list-style-type: none;
 	display: flex;
 	flex-direction: row;
@@ -8,7 +12,7 @@ ul {
 	position: relative;
 }
 
-li {
+header li {
 	font-size: 24px;
 	margin: 0;
 	padding: 0 20px;
@@ -16,13 +20,13 @@ li {
 	line-height: 80px;
 }
 
-a {
+header a {
 	text-decoration: none;
 	color: #fff;
 	font-weight: bold;
 }
 
-li:nth-child(1) {
+header li:nth-child(1) {
 	position: absolute;
 	left: 0px;
 }

@@ -1,6 +1,6 @@
 package com.hyul.model;
 
-public class DTO_hyul {
+public class MapDTO {
 	private String category;
 	private String hyulName;
 	private String hyulPos;
@@ -9,7 +9,7 @@ public class DTO_hyul {
 	private String hyulEffect;
 	private String imgPath;
 
-	public DTO_hyul() {
+	public MapDTO() {
 		super();
 	}
 

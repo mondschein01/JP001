@@ -10,19 +10,50 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import javax.naming.Context;
+import javax.naming.InitialContext;
+import javax.sql.DataSource;
+
 import com.hyul.util.DbClose;
 import com.hyul.util.DbSet;
 
-public class DAO_hyul {
+public class MapDAO {
+	// constructor for connection pool
+	private Context init;
+	private DataSource ds;
+	private Connection conn;
+	private ResultSet rs;
+	private PreparedStatement pstmt;
+	private MapDTO tmpDTO;
+	
+	private MapDAO() {
+		try {
+			init = new InitialContext();
+			ds = (DataSource) init.lookup("java:/comp/env/jdbc/oracle");
+		}
+		catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	// singleton pattern
+	private static MapDAO instance;
 
+	public static MapDAO getInstance() {
+		if (instance == null) {
+			instance = new MapDAO();
+		}
+		return instance;
+	}
+	
 	// create // 미구현
 	public void insHyul() {
 		
 	}
 
 	// read
-	public List<DTO_hyul> selHyul() {
-		List<DTO_hyul> dtoAry_hyul = new ArrayList<>();
+	public List<MapDTO> selHyul() {
+		List<MapDTO> dtoAry_hyul = new ArrayList<>();
 
 		Connection conn = DbSet.getConnection();
 		PreparedStatement pstmt = null;
@@ -44,7 +75,7 @@ public class DAO_hyul {
 				String hyulEffect = rs.getString("hyulEffect");
 				String imgPath = rs.getString("imgPath");
 
-				DTO_hyul tmpDTO = new DTO_hyul();
+				MapDTO tmpDTO = new MapDTO();
 
 				tmpDTO.setCategory(category);
 				tmpDTO.setHyulName(hyulName);
@@ -64,13 +95,9 @@ public class DAO_hyul {
 		return dtoAry_hyul;
 	}
 
-	public DTO_hyul selHyul(String _category, String _hyulName) {
-		Connection conn = DbSet.getConnection();
-		PreparedStatement pstmt = null;
-		ResultSet rs = null;
-		DTO_hyul tmpDTO = null;
-
+	public MapDTO selHyul(String _category, String _hyulName) {
 		try {
+			conn = ds.getConnection();
 			String sql = "SELECT * FROM hyulMap WHERE  category LIKE ? AND hyulname LIKE ?";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, "%" + _category + "%");
@@ -87,7 +114,7 @@ public class DAO_hyul {
 				String hyulEffect = rs.getString("hyulEffect");
 				String imgPath = rs.getString("imgPath");
 
-				tmpDTO = new DTO_hyul();
+				tmpDTO = new MapDTO();
 
 				tmpDTO.setCategory(category);
 				tmpDTO.setHyulName(hyulName);
@@ -111,7 +138,7 @@ public class DAO_hyul {
 	}
 	
 	// update
-	public void updHyul(DTO_hyul _dto) {
+	public void updHyul(MapDTO _dto) {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 
@@ -131,7 +158,7 @@ public class DAO_hyul {
 			if (matcher.find()) {
 				hyulName2 = matcher.group();
 				pstmt = conn.prepareStatement(sql_update);
-				pstmt.setString(1, "./src/main/webapp/img/map/" + category2 + "/" + hyulName2 + ".png");
+				pstmt.setString(1, "./../img/map/" + category2 + "/" + hyulName2.toLowerCase() + ".png");
 				pstmt.setString(2, hyulName);
 				pstmt.executeUpdate();
 			}
@@ -150,7 +177,7 @@ public class DAO_hyul {
 
 	// set ImgPath
 	public void setHyulImgPath() {
-		List<DTO_hyul> dtos = selHyul();
+		List<MapDTO> dtos = selHyul();
 		
 		for (int i = 0; i < dtos.size(); i++) {
 			updHyul(dtos.get(i));

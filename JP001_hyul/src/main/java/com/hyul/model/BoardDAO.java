@@ -10,9 +10,9 @@ import java.util.List;
 import com.hyul.util.DbClose;
 import com.hyul.util.DbSet;
 
-public class DAO_board {
-	public List<DTO_board> selBoard() {
-		List<DTO_board> dtoAry_board = new ArrayList<>();
+public class BoardDAO {
+	public List<BoardDTO> selBoard() {
+		List<BoardDTO> dtoAry_board = new ArrayList<>();
 
 		Connection conn = DbSet.getConnection();
 		PreparedStatement pstmt = null;
@@ -33,7 +33,7 @@ public class DAO_board {
 				String bHits = rs.getString("bHits");
 				String bContent = rs.getString("bContent");
 
-				DTO_board tmpDTO = new DTO_board();
+				BoardDTO tmpDTO = new BoardDTO();
 
 				tmpDTO.setbIdx(bIdx);
 				tmpDTO.setbTitle(bTitle);

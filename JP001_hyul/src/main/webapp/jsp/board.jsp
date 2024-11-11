@@ -3,13 +3,18 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" type="text/css" href="./../css/home.css">
+	<script src="" type="text/javascript"></script>
+	<title>게시판</title>
 </head>
 <body>
     <jsp:include page="./header.jsp" />
         
     <main>
+    	<div>
+    		
+    	</div>
     </main>
        
 	<jsp:include page="./footer.jsp" />

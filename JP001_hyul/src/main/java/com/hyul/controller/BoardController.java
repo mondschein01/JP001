@@ -4,13 +4,13 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.hyul.model.Service_board;
+import com.hyul.model.BoardService;
 
 @WebServlet("/board")
-public class Controller_board {
+public class BoardController {
 	// 게시판 모드 : 게시글 조회, 새 글쓰기 가능
 	public void viewBoardList(HttpServletRequest req, HttpServletResponse res) {
-		Service_board service_board = new Service_board();
+		BoardService service_board = new BoardService();
 		// 게시글 번호가 기본 키, 
 	}
 	

@@ -1,6 +1,6 @@
 package com.hyul.model;
 
-public class DTO_board {
+public class BoardDTO {
 	private String bIdx; // 글번호 Sequance
 	private String bTitle; // 제목
 	private String bWriter; // 글쓴이

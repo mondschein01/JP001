@@ -1,5 +1,5 @@
 package com.hyul.controller;
 
-public class Controller_login {
+public class LoingController {
 
 }

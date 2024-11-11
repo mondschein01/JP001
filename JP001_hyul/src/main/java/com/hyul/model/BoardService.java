@@ -1,6 +1,6 @@
 package com.hyul.model;
 
-public class Service_board {
+public class BoardService {
 	// 리스트를 띄워야 한다고 한다면, jsp에 페이지네이션, 게시글목록 이런 걸 되돌려줘야 하잖아 
 	
 	// 메뉴 페이지 (인클루드)
