@@ -1,58 +1,61 @@
 package com.hyul.model;
 
+import java.sql.Timestamp;
+
 public class BoardDTO {
-	private String bIdx; // 글번호 Sequance
-	private String bTitle; // 제목
-	private String bWriter; // 글쓴이
-	private String bRegTime; // 작성일
-	private String bHits; // 조회수
-	private String bContent; // 내용
-	
-	public String getbIdx() {
-		return bIdx;
+	private int idx; // 글번호 Sequance
+	private String title; // 제목
+	private String writer; // 글쓴이
+	private Timestamp regTime; // 작성일
+	private int hits; // 조회수
+	private String content; // 내용
+
+	public int getIdx() {
+		return idx;
 	}
 
-	public void setbIdx(String bIdx) {
-		this.bIdx = bIdx;
+	public void setIdx(int idx) {
+		this.idx = idx;
 	}
 
-	public String getbTitle() {
-		return bTitle;
+	public String getTitle() {
+		return title;
 	}
 
-	public void setbTitle(String bTitle) {
-		this.bTitle = bTitle;
+	public void setTitle(String title) {
+		this.title = title;
 	}
 
-	public String getbWriter() {
-		return bWriter;
+	public String getWriter() {
+		return writer;
 	}
 
-	public void setbWriter(String bWriter) {
-		this.bWriter = bWriter;
+	public void setWriter(String writer) {
+		this.writer = writer;
 	}
 
-	public String getbRegTime() {
-		return bRegTime;
+	public Timestamp getRegTime() {
+		return regTime;
 	}
 
-	public void setbRegTime(String bRegTime) {
-		this.bRegTime = bRegTime;
+	public void setRegTime(Timestamp regTime) {
+		this.regTime = regTime;
 	}
 
-	public String getbHits() {
-		return bHits;
+	public int getHits() {
+		return hits;
 	}
 
-	public void setbHits(String bHits) {
-		this.bHits = bHits;
+	public void setHits(int hits) {
+		this.hits = hits;
 	}
 
-	public String getbContent() {
-		return bContent;
+	public String getContent() {
+		return content;
 	}
 
-	public void setbContent(String bContent) {
-		this.bContent = bContent;
+	public void setContent(String content) {
+		this.content = content;
 	}
+
 }

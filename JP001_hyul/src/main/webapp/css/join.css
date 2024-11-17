@@ -1,0 +1,35 @@
+body {
+    width: 1340px;
+    margin: 0 auto;
+    padding: 0;
+}
+
+#root {
+    margin: 0 auto;
+    padding: 0;
+    width: 1340px;
+    height: 900px;
+    /* border: 1px solid black; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+table {
+    width: 300px;
+}
+
+#td_btns {
+    width: 100%;
+    text-align: center;
+}
+
+#td_btns input {
+    width: 100px;
+    margin: 20px 20px;
+}
+
+td input[type="text"], input[type="password"]{
+    width: 100%;
+}
+

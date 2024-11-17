@@ -5,9 +5,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>모두의혈자리 - 혈자리총서</title>
     <link rel="stylesheet" href="./../css/map.css" type="text/css">
     <script src="./../js/map.js" type="text/javascript"></script>
+    <title>모두의혈자리 - 혈자리총서</title>
 </head>
 <body onload="mInit()">
     <div id="wrapper">

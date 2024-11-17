@@ -1,0 +1,50 @@
+body {
+    width: 1340px;
+    margin: 0 auto;
+    padding: 0;
+    box-sizing: content-box;
+}
+
+#root {
+    width: 1340px;
+    height: 900px;
+    /* border: 1px solid black; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#loginForm {
+    width: 600px;
+    height: 600px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#loginForm input[type="button"]{
+    margin-top: 10px;
+    margin-bottom: 10px;
+    width: 100%;
+}
+
+#loginForm label {
+    font-size: 16px;
+}
+
+#loginForm input[type="text"]{
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+#loginForm input[type="password"]{
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+#loginForm a{
+    cursor: pointer;
+    text-decoration: none;
+    color: black;
+}

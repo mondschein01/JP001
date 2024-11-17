@@ -30,6 +30,7 @@ public class MapDAO {
 		try {
 			init = new InitialContext();
 			ds = (DataSource) init.lookup("java:/comp/env/jdbc/oracle");
+			setHyulImgPath();
 		}
 		catch (Exception e) {
 			e.printStackTrace();

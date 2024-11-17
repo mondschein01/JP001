@@ -6,9 +6,6 @@ import java.util.Map;
 import org.json.simple.JSONObject;
 
 public class MapService {
-	/*
-	 * 카테고리와 혈자리 이름 두개를 넘겨 받아서 해당하는 정보를 넘겨 줌
-	 * */
 	public JSONObject readHyulMapData(String _category, String _hyulName) {
 		MapDAO mapDAO = MapDAO.getInstance();
 		MapDTO dto_hyul = mapDAO.selHyul(_category, _hyulName);
@@ -34,6 +31,50 @@ public class MapService {
 
 		return jo;
 	}
-	
-	
 }
+
+
+/*
+
+CREATE TABLE hyulEffect AS
+SELECT DISTINCT
+    TRIM(SUBSTR(HYULEFFECT, start_pos, end_pos - start_pos)) AS HYULEFFECT
+FROM (
+    SELECT 
+        HYULEFFECT,
+        INSTR(HYULEFFECT || ',', ',', 1, LEVEL) + 1 AS start_pos,
+        INSTR(HYULEFFECT || ',', ',', 1, LEVEL + 1) AS end_pos
+    FROM 
+        hyulMap
+    CONNECT BY 
+        PRIOR HYULNAME = HYULNAME
+        AND LEVEL <= LENGTH(HYULEFFECT) - LENGTH(REPLACE(HYULEFFECT, ',', '')) + 1
+        AND PRIOR SYS_GUID() IS NOT NULL
+)
+WHERE end_pos > start_pos;
+
+SET HEADING OFF;
+SET FEEDBACK OFF;
+SET COLSEP ',';
+SET PAGESIZE 0;
+SET LINESIZE 1000;
+SPOOL output.csv;
+
+SELECT DISTINCT
+    TRIM(SUBSTR(HYULEFFECT, start_pos, end_pos - start_pos)) AS HYULEFFECT
+FROM (
+    SELECT 
+        HYULEFFECT,
+        INSTR(HYULEFFECT || ',', ',', 1, LEVEL) + 1 AS start_pos,
+        INSTR(HYULEFFECT || ',', ',', 1, LEVEL + 1) AS end_pos
+    FROM 
+        hyulMap
+    CONNECT BY 
+        PRIOR HYULNAME = HYULNAME
+        AND LEVEL <= LENGTH(HYULEFFECT) - LENGTH(REPLACE(HYULEFFECT, ',', '')) + 1
+        AND PRIOR SYS_GUID() IS NOT NULL
+)
+WHERE end_pos > start_pos;
+
+SPOOL OFF;
+ * */

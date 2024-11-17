@@ -40,7 +40,7 @@
 #submenu {
 	width: 1340px;
 	margin: 0 auto;
-	
+
 }
 #submenu ul {
 	list-style-type: none;
@@ -111,7 +111,9 @@
 
 }
 
-
+p {
+	white-space: pre-line;
+}
 
 
 /*  */

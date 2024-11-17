@@ -72,7 +72,7 @@ let sAry_ki = [
 // 수궐음심포경
 let sAry_pc = [
     '천지(天池)','천천(天泉)','곡택(曲澤)','극문(郄門)','간사(間使)',
-    '내관(內關)','대릉(大陵)','노궁(勞宮)','중충(中衝)'  
+    '내관(內關)','대릉(大陵)','노궁(勞宮)','중충(中衝)'
 ]
 // 수소양삼초경
 let sAry_te = [
@@ -138,12 +138,12 @@ let sAry_noname1 = [
 // 족침
 let sAry_noname2 = [
     '족침 준비 중입니다.'
-    
+
 ]
 // 수지학
 let sAry_noname3 = [
     '수지학 준비 중입니다.'
-    
+
 ]
 // 혈 이름 배열
 let sAry_hyuls = [
@@ -154,12 +154,12 @@ let sAry_hyuls = [
 ]
 // 혈 이름 배열 객체
 let obj_sAry = {
-    수태음폐경: sAry_lu, 수양명대장경: sAry_li, 족양명위경: sAry_st, 
+    수태음폐경: sAry_lu, 수양명대장경: sAry_li, 족양명위경: sAry_st,
     족태음비경: sAry_sp, 수소음심경: sAry_ht, 수태양소장경: sAry_si,
-    족태양방광경: sAry_bl, 족소음신경: sAry_ki, 수궐음심포경: sAry_pc, 
-    수소양삼초경: sAry_te, 족소양담경: sAry_gb, 족궐음간경: sAry_lr, 
-    임맥: sAry_gv, 독맥: sAry_cv, 경외기혈: sAry_ex, 
-    이침: sAry_noname1, 족침: sAry_noname2, 수지학: sAry_noname3, 
+    족태양방광경: sAry_bl, 족소음신경: sAry_ki, 수궐음심포경: sAry_pc,
+    수소양삼초경: sAry_te, 족소양담경: sAry_gb, 족궐음간경: sAry_lr,
+    임맥: sAry_gv, 독맥: sAry_cv, 경외기혈: sAry_ex,
+    이침: sAry_noname1, 족침: sAry_noname2, 수지학: sAry_noname3,
 }
 
 let ary_el_li;
@@ -209,10 +209,10 @@ function makeSubMenu(item, idx) {
         ary_el_subMenu_a.push(tmp_el_a);
 
         // a에 이벤트 추가하기
-        tmp_el_a.addEventListener('click', 
+        tmp_el_a.addEventListener('click',
             () => activateSubMenu(tmp_el_a, sAry_hyuls[idx], tgAry[i]));
     }
-    
+
     // 서브메뉴에 ul 추가
     el_subMenu.appendChild(tmp_el_ul);
 
@@ -223,24 +223,24 @@ function makeSubMenu(item, idx) {
 
     // 클릭한 menu 활성화 효과 주기
     item.classList.add("activate");
-	
-	
+
+
     // 서브 메뉴 활성화
     activateSubMenu(ary_el_subMenu_a[0], sAry_hyuls[idx], tgAry[0]);
 }
 
 function activateSubMenu(item, categoryName, hyulName) {
-	
+
     // 다른 item 활성화 삭제
     for (let i = 0; i < ary_el_subMenu_a.length; i++) {
         ary_el_subMenu_a[i].classList.remove("activate");
-		
+
     }
 
     // 클릭한 menu 활성화 효과 주기
     item.classList.add("activate");
 
-	// ajax 호출	
+	// ajax 호출
 	dataTrans(categoryName, hyulName);
 }
 
@@ -248,14 +248,14 @@ function dataTrans(categoryName, hyulName){
 	let xhr = new XMLHttpRequest();
 	xhr.open("POST", "./../map", true);
 	xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-	
+
 	xhr.onreadystatechange = function() {
 		if (xhr.readyState === 4 && xhr.status === 200) {
 			let jsonRep = JSON.parse(xhr.responseText);
             udpImgAndText(jsonRep);
 		}
 	}
-	
+
 	let data = `cName=${categoryName}&hName=${hyulName}`;
 	xhr.send(data);
 }
@@ -268,13 +268,13 @@ function udpImgAndText(jsonRep){
     let vHyulWayToChim = jsonRep['wayToChim'];
     let vHyulEffect = jsonRep['hyulEffect'];
     let vImagPath = jsonRep['imgPath'];
-	
+
     let el_category = el_descBox.children.item(0);
     el_category.innerHTML = vCategory;
 
     let el_hyulName = el_descBox.children.item(1);
     el_hyulName.innerHTML = vHyulName;
-    
+
     el_descBox.children.item(2).innerHTML = "부위";
     let el_hyulPos = el_descBox.children.item(3);
     el_hyulPos.innerHTML = vHyulPos;

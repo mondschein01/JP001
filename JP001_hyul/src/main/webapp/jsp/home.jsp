@@ -9,11 +9,11 @@
     <script src="" type="text/javascript"></script>
     <title>모두의혈자리</title>
 </head>
+
 <body>
     <jsp:include page="./header.jsp" />
-        
     <main>
-    	<div>
+    	<div  id="root">
     		<img src="./../img/main/main.png">
     	</div>
     </main>

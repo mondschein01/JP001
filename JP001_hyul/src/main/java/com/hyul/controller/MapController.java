@@ -11,39 +11,22 @@ import org.json.simple.JSONObject;
 
 import com.hyul.model.MapService;
 
-@WebServlet("/map")
+//@WebServlet("/map")
 public class MapController extends HttpServlet{
 	@Override
 	public void init() {
 	}
 	
-	// create
 	@Override
 	public void doPost(HttpServletRequest req, HttpServletResponse rep) 
 			throws ServletException, IOException {
 		doHandle(req, rep);
 	}
 	
-	// read
 	@Override
 	public void doGet(HttpServletRequest req, HttpServletResponse rep) 
 			throws ServletException, IOException {
 		doHandle(req, rep);
-	}
-	
-	
-	// update
-	@Override
-	public void doPut(HttpServletRequest req, HttpServletResponse rep) 
-			throws ServletException, IOException {
-		
-	}
-	
-	// delete
-	@Override
-	public void doDelete(HttpServletRequest req, HttpServletResponse rep) 
-			throws ServletException, IOException {
-		
 	}
 	
 	@Override
