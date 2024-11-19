@@ -14,10 +14,6 @@ import com.hyul.model.MapService;
 //@WebServlet("/map")
 public class MapController extends HttpServlet{
 	@Override
-	public void init() {
-	}
-	
-	@Override
 	public void doPost(HttpServletRequest req, HttpServletResponse rep) 
 			throws ServletException, IOException {
 		doHandle(req, rep);
@@ -28,12 +24,6 @@ public class MapController extends HttpServlet{
 			throws ServletException, IOException {
 		doHandle(req, rep);
 	}
-	
-	@Override
-	public void destroy() {
-		
-	}
-	
 	
 	public void doHandle(HttpServletRequest req, HttpServletResponse rep) 
 			throws ServletException, IOException  {
@@ -48,12 +38,12 @@ public class MapController extends HttpServlet{
 		hName = hName.replaceAll("[^가-힣]", "");
 		
 		// 테스트용 출력
-//		System.out.println(cName);
-//		System.out.println(hName);
+		System.out.println(cName);
+		System.out.println(hName);
 		
 		// 결과를 얻기 위한 readHyulMapData 메소드 실행
-		MapService obj = new MapService();
-		JSONObject jo = obj.readHyulMapData(cName, hName);
+		MapService mapService = new MapService();
+		JSONObject jo = mapService.readHyulMapData(cName, hName);
 		
 		// json 쓰기
 		rep.setContentType("application/json");

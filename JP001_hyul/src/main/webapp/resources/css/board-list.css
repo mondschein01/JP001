@@ -1,0 +1,87 @@
+body {
+    margin: 0 auto;
+}
+
+#root {
+    width: 1340px;
+    margin: 0 auto;
+    /* border: 1px solid gray; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 800px;
+    justify-content: center;
+}
+
+#root * {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 1em;
+}
+/* 테이블 상단 셀렉트 컨테이너 */
+#container_top_select {
+    width: 800px;
+    display: flex;
+    justify-content: right;
+    margin-bottom: 1em;
+}
+
+#container_top_select select {
+    margin-left: 6px;
+}
+
+/* 테이블 */
+#table_board_list {
+    width: 800px;
+    border-collapse: collapse;
+    text-align: center;
+}
+
+#table_board_list thead tr{
+    border-bottom: 3px solid blue;
+    border-top: 3px solid blue;
+}
+
+#table_board_list tbody td:nth-child(2) {
+    cursor: pointer;
+}
+
+tr {
+    border-bottom: 1px solid gray;
+}
+
+/* 테이블 하단 버튼 컨테이너 */
+#container_bot_btn {
+    width: 800px;
+    margin: 16px 0;
+    display: flex;
+    justify-content: right;
+}
+
+#container_bot_btn button {
+    background-color: #ddd;
+    color: black;
+    padding: 4px 8px;
+}
+
+/* 버튼 하단 페이지네이션 */
+#container_pagination {
+    display: inline-block;
+    width: 800px;
+    display: flex;
+    justify-content: center;
+}
+
+#container_pagination ul{
+    margin-top: 0;
+    padding: 0;
+    list-style-type: none;
+    display: flex;
+    flex-direction: row;
+}
+
+#container_pagination li{
+    margin: 0 3px;
+    color: black;
+    cursor: pointer;
+}
+

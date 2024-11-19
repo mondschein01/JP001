@@ -1,6 +1,9 @@
 package com.hyul.model;
 
+import java.util.HashMap;
 import java.util.Map;
+
+import org.json.simple.JSONObject;
 
 public class MemberService {
 	MemberDAO memberDAO;
@@ -40,68 +43,75 @@ public class MemberService {
 	}
 
 	// 아이디 찾기
-	public String memberFindId(Map<String, String[]> map) {
-		// 회원으로부터 이름과 이메일을 입력 받음
-		userInputName = map.get("mem_name")[0];
-		userInputEmail = map.get("mem_email")[0];
-
+	public JSONObject memberFindId(String mem_name, String mem_email) {
 		// DB에서 입력 받은 값과 일치하는 DTO를 받아옴
-		MemberDTO memberDTO = memberDAO.selMemberFindId(userInputName, userInputEmail);
-
+		MemberDTO memberDTO = memberDAO.selMemberFindId(mem_name, mem_email);
+		
+		Map<String, String> tmpMap = new HashMap<>();
+		
 		// 일치하는 값이 있는지 체크
 		if (memberDTO == null) {
 			System.out.println("아이디 찾기 실패");
+			tmpMap.put("rst", "가입된 아이디가 없습니다.");
 
-			return null;
+		}
+		// 일치하는 값이 있다면
+		else {
+			System.out.println("아이디 찾기 성공");
+			String findId = memberDTO.getMem_id();
+			tmpMap.put("rst", "가입된 아이디는 " + findId + " 입니다.");
 		}
 
-		// 일치하는 값이 있다면
-		String findId = memberDTO.getMem_id();
-		System.out.println(findId + "아이디 찾기 성공");
-
-		return findId;
+		// 결과 반환을 위한 JsonObejct 생성
+		JSONObject rst = new JSONObject(tmpMap);
+		
+		return rst;
 	}
 
 	// 비밀번호 찾기
-	public String memberFindPw(Map<String, String[]> map) {
-		// 회원으로부터 이름과 이메일을 입력 받음
-		userInputId = map.get("mem_id")[0];
-		userInputEmail = map.get("mem_email")[0];
-
+	public JSONObject memberFindPw(String mem_id, String mem_email) {
 		// DB에서 입력 받은 값과 일치하는 DTO를 받아옴
-		MemberDTO memberDTO = memberDAO.selMemberFindPw(userInputId, userInputEmail);
+		MemberDTO memberDTO = memberDAO.selMemberFindPw(mem_id, mem_email);
 
+		Map<String, String> tmpMap = new HashMap<>();
+		
 		// 일치하는 값이 있는지 체크
 		if (memberDTO == null) {
 			System.out.println("비밀번호 찾기 실패");
+			tmpMap.put("rst", "가입된 아이디가 없습니다.");
 
-			return null;
+		}
+		// 일치하는 값이 있다면
+		else {
+			System.out.println("비밀번호 찾기 성공");
+			String findPw = memberDTO.getMem_pw();
+			tmpMap.put("rst", "비밀번호는 " + findPw + " 입니다.");
 		}
 
-		// 일치하는 값이 있다면
-		String findPw = memberDTO.getMem_pw();
-		System.out.println(findPw + "비밀번호 찾기 성공");
-
-		return findPw;
+		// 결과 반환을 위한 JsonObejct 생성
+		JSONObject rst = new JSONObject(tmpMap);
+		
+		return rst;
 	}
 
 	// 로그인
-	public boolean memberLogin(Map<String, String[]> map) {
+	public MemberDTO memberLogin(Map<String, String[]> map) {
 		userInputId = map.get("mem_id")[0];
 		userInputPw = map.get("mem_pw")[0];
-
-		boolean rst = false;
-
+		
+		MemberDTO memberDTO = null;
+		
 		// 아이디 유무 체크
-		MemberDTO memberDTO = memberDAO.selMember(userInputId);
+		memberDTO = memberDAO.selMember(userInputId);
 		if (memberDTO != null) {
 			// 비밀번호 체크
 			String pwInDB = memberDTO.getMem_pw();
 			if (userInputPw.equals(pwInDB)) {
-				rst = true;
+				memberDTO.getMem_name();
 			}
 		}
-		return rst;
+		
+		return memberDTO;
 	}
 
 	// 회원 수정
@@ -109,10 +119,10 @@ public class MemberService {
 		userInputId = map.get("mem_id")[0];
 		userInputPw = map.get("mem_pw")[0];
 		userInputName = map.get("mem_name")[0];
-		userInputEmail = map.get("mem_email")[0];
-		userInputGender = map.get("mem_gender")[0];
 		userInputBirth = map.get("mem_birth")[0];
-
+		userInputGender = map.get("mem_gender")[0];
+		userInputEmail = map.get("mem_email")[0];
+		
 		boolean rst = false;
 
 		// 아이디 유무 체크
@@ -120,11 +130,21 @@ public class MemberService {
 
 		// 회원 수정
 		if (memberDTO != null) {
-			String queryString = "UPDATE member SET " + "mem_pw = ? " + "mem_name= ? " + "mem_email = ? "
-					+ "mem_gender = ? " + "mem_birth = ? " + "WHERE mem_id = ?";
-
-			memberDAO.insDelUpdMember(queryString, userInputPw, userInputName, userInputEmail, userInputGender,
-					userInputBirth, userInputId);
+			String queryString = "UPDATE member SET " 
+					+ "mem_pw = ?, " 
+					+ "mem_name= ?, " 
+					+ "mem_email = ?, "
+					+ "mem_gender = ?, " 
+					+ "mem_birth = ? "
+					+ "WHERE mem_id = ?";
+			
+			memberDAO.insDelUpdMember(queryString, 
+					userInputPw, 
+					userInputName, 
+					userInputEmail, 
+					userInputGender,
+					userInputBirth, 
+					userInputId);
 
 			rst = true;
 		}
@@ -135,11 +155,6 @@ public class MemberService {
 	// 회원 삭제
 	public boolean memberDel(Map<String, String[]> map) {
 		userInputId = map.get("mem_id")[0];
-		userInputPw = map.get("mem_pw")[0];
-		userInputName = map.get("mem_name")[0];
-		userInputEmail = map.get("mem_email")[0];
-		userInputGender = map.get("mem_gender")[0];
-		userInputBirth = map.get("mem_birth")[0];
 
 		boolean rst = false;
 
@@ -147,8 +162,9 @@ public class MemberService {
 		MemberDTO memberDTO = memberDAO.selMember(userInputId);
 
 		// 회원 삭제
-		if (memberDTO == null) {
-			String queryString = "DELETE FROM member " + "WHERE mem_id = ?";
+		if (memberDTO != null) {
+			String queryString = "DELETE FROM member " 
+										+ "WHERE mem_id = ?";
 
 			memberDAO.insDelUpdMember(queryString, userInputId);
 

@@ -82,12 +82,9 @@ public class BoardDAO {
 	
 	public List<BoardDTO> getBoardDTOList(int _startNum, int _endNum) {
 		List<BoardDTO> dtoAry_board = new ArrayList<>();
-
 		try {
 			conn = ds.getConnection();
-			String sql = "SELECT * FROM board"
-					+ " WHERE bd_idx BETWEEN ? AND ?"
-					+ " ORDER BY bd_idx DESC";
+			String sql = "SELECT * FROM (SELECT ROWNUM num, board.* FROM board ORDER BY bd_idx DESC) WHERE num BETWEEN ? AND ?";
 
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, _startNum);

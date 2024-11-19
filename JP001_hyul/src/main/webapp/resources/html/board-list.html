@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./../css/board-list.css">
+    <script src="./../js/board-list.js"></script>
+    <title>게시판</title>
+</head>
+<script>
+    // 추후 스크립틀릿으로 변경
+    totalRecordCnt = 255; // 총 레코드 수 // db에 SELECT count(*)로 받아옴 // 임의 255
+    recordCntPerPage = 10; // 초기값 10 // 한 페이지의 몇 개의 레코드를 출력할 것인가
+    pageCntPerBlock = 10; // 초기값 10 // 한 블럭에 몇 개의 페이지를 출력할 것인가
+
+    curPageIdx = 0; // 현재 페이지 인덱스 // 초기값 0
+    curBlockIdx = 0; // 현재 블럭 인덱스 // 초기값 0
+
+    startRecordNum = 0; // 시작 레코드 숫자 // curPageIdx * recordCntPerPage = 0
+    endRecordNum = 0; // 끝 레코드 숫자 // ((curPageIdx + 1) * recordCntPerPage) - 1 = 9
+    startPageNum = 0; // 시작 페이지 숫자 // curBlockIdx * pageCntPerBlock = 0
+    endPageNum = 0; // 끝 페이지 숫자 // ((curBlockIdx + 1) * pageCntPerBlock) - 1 = 9
+
+</script>
+<body>
+    <div id="wrapper">
+	    <!-- <jsp:include page="./header.jsp" /> -->
+
+        <main>
+            <div id="root">
+                <table id="table_board_list">
+                    <thead>
+                        <tr>
+                            <td>번호</td>
+                            <td>제목</td>
+                            <td>작성자</td>
+                            <td>작성일시</td>
+                            <td>조회수</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- scriptlet을 이용한 레코드 동적 생성 -->
+                        <tr>
+                            <td>1</td>
+                            <td>킹 받노 ㅋㅋ</td>
+                            <td>최쨩</td>
+                            <td>2024-11-18 10:10:18</td>
+                            <td>0</td>
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                            <td>킹 받노 ㅋㅋ</td>
+                            <td>최쨩</td>
+                            <td>2024-11-18 10:10:18</td>
+                            <td>0</td>
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                            <td>킹 받노 ㅋㅋ</td>
+                            <td>최쨩</td>
+                            <td>2024-11-18 10:10:18</td>
+                            <td>0</td>
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                            <td>킹 받노 ㅋㅋ</td>
+                            <td>최쨩</td>
+                            <td>2024-11-18 10:10:18</td>
+                            <td>0</td>
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                            <td>킹 받노 ㅋㅋ</td>
+                            <td>최쨩</td>
+                            <td>2024-11-18 10:10:18</td>
+                            <td>0</td>
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                            <td>킹 받노 ㅋㅋ</td>
+                            <td>최쨩</td>
+                            <td>2024-11-18 10:10:18</td>
+                            <td>0</td>
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                            <td>킹 받노 ㅋㅋ</td>
+                            <td>최쨩</td>
+                            <td>2024-11-18 10:10:18</td>
+                            <td>0</td>
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                            <td>킹 받노 ㅋㅋ</td>
+                            <td>최쨩</td>
+                            <td>2024-11-18 10:10:18</td>
+                            <td>0</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div id="container_botton_btn">
+                    <button type="button" onclick="">글쓰기</button>
+                </div>
+                <div id="container_pagination">
+                    <ul>
+                        <!-- scriptlet을 이용한 페이지네이션 동적 생성 -->
+                        <li><a href="">1</a></li>
+                        <li><a href="">2</a></li>
+                        <li><a href="">3</a></li>
+                    </ul>
+                </div>
+            </div>
+        </main>
+
+        <!-- <jsp:include page="./footer.jsp" /> -->
+    </div>
+</body>
+</html>

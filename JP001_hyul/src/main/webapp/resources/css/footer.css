@@ -1,0 +1,10 @@
+footer {
+    width: 1340px;
+    margin: 0 auto;
+}
+
+footer * {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    margin-top: 20px;
+    text-align: center;
+}

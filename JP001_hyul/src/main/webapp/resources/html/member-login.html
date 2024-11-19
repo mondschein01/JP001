@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>로그인</title>
+    <link rel="stylesheet" href="./../css/member-login.css">
+    <script src="./../js/member-login.js"></script>
+</head>
+<body>
+    <div id="wrapper">
+	    <!-- <jsp:include page="./header.jsp" /> -->
+
+    <main>
+        <div id="root">
+            <form action="" method="post" name="form_login">
+                <table>
+                    <tr>
+                        <td><label for="mem_id">아이디</label></td>
+                        <td><input type="text" id="mem_id" class="mem_id" name="mem_id"></td>
+                    </tr>
+                    <tr>
+                        <td><label for="mem_pw">비밀번호</label></td>
+                        <td><input type="password" id="mem_pw" class="mem_pw" name="mem_pw"></td>
+                    </tr>
+                </table>
+                <div>
+                    <input type="button" value="로그인">
+                </div>
+            </form>
+        </div>
+    </main>
+
+        <!-- <jsp:include page="./footer.jsp" /> -->
+    </div>
+</body>
+</html>

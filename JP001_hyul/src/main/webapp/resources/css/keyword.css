@@ -1,0 +1,126 @@
+body {
+    margin: 0 auto;
+}
+
+#root {
+    width: 1340px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 800px;
+}
+
+#root * {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 1em;
+}
+
+/* 검색창 */
+#box_search {
+    margin: 20px 0 20px 0;
+}
+
+#box_search input[type="text"] {
+    height: 36px;
+    width: 500px;
+}
+
+/* 인기 키워드 */
+#box_keyword {
+    margin: 0 0 20px 0;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+ul li {
+    margin: 5px 5px;
+}
+
+ul a {
+    cursor: pointer;
+    color: white;
+    font-weight: bold;
+}
+
+#box_keyword ul {
+    /* background-color: orange; */
+    text-align: center;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-content: start;
+}
+
+#box_keyword ul li{
+    width: 120px;
+    cursor: pointer;
+}
+
+#box_keyword ul a.activate{
+    background-color: brown;
+}
+
+/* 검색 결과 */
+#box_queryResult ul {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+}
+
+#box_queryResult ul li{
+    width: 300px;
+    cursor: pointer;
+}
+
+#box_queryResult ul a.activate{
+    background-color: brown;
+}
+
+/* box_desc */
+#container_description {
+    width: 1340px;
+    height: 654px;
+    border: 1px solid black;
+    display: flex;
+    flex-direction: row;
+}
+
+#lo_left {
+    width: 670px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#lo_left img {
+    width: 550px;
+    height: 550px;
+}
+
+#lo_right {
+    width: 670px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#box_desc {
+    width: 510px;
+    height: 510px;
+    border: 1px solid black;
+    padding: 20px;
+    overflow-x:hidden;
+    overflow-y:auto;
+}
+
+/*
+h1은 카테고리
+h2는 혈자리
+h3은 소제목
+p는 설명
+*/

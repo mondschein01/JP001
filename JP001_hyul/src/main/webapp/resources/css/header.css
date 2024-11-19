@@ -1,0 +1,40 @@
+header {
+    width: 1340px;
+    margin: 0 auto;
+}
+
+header * {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    margin: 0 auto;
+}
+
+header ul {
+    display: flex;
+    flex-direction: row;
+    list-style-type: none;
+    background-color: orange;
+    height: 80px;
+    line-height: 80px;
+    position: relative;
+    justify-content: right;
+    padding: 0;
+}
+
+header li {
+    margin: 0 15px;
+
+}
+
+header a {
+    text-decoration: none;
+    color: white;
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+
+header li:first-child {
+    position: absolute;
+    left: 20px;
+
+}
